@@ -1,0 +1,32 @@
+.filmDetail {
+  /* background: url("https://wallpaperaccess.com/full/546582.jpg"),
+    linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent), center no-repeat;
+  background-blend-mode: overlay;
+  padding: 0;
+  overflow: hidden; */
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
+
+.filmDetail__button {
+  display: flex;
+  flex-direction: column;
+}
+span.ant-progress-text {
+  color: white !important;
+}
+/* @media screen and (min-width: 375px) {
+  .filmDetail {
+    margin: 2rem;
+  }
+} */
+@media screen and (min-width: 375px) {
+  .filmDetail__button {
+    flex-direction: row !important;
+  }
+}
+/* @media screen and (min-width: 768px) {
+  .filmDetail {
+    margin: 3rem;
+  }
+} */

@@ -1,0 +1,39 @@
+.cinemaList {
+  width: 100%;
+  overflow-x: scroll;
+  margin-bottom: 0.5em;
+}
+.cinemaList ul {
+  /* width: fit-content; */
+  margin-bottom: 0 !important;
+}
+.cinemaList ul li a img {
+  max-width: initial;
+  display: inline-block;
+  width: 60px;
+  background-color: #fff !important;
+}
+
+@media screen and (min-width: 768px) {
+  .cinemaList {
+    width: 30vw;
+    overflow-y: scroll;
+    overflow-x: visible;
+  }
+  .cinemaList ul {
+    overflow-y: scroll;
+    width: fit-content;
+    margin: 0;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .cinemaList {
+    width: 20vw;
+    overflow: hidden;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .cinemaList {
+    width: 15vw;
+  }
+}
