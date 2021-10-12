@@ -9,7 +9,7 @@ import RegisterForm from "./components/RegisterForm.jsx";
 import { createBrowserHistory } from "history";
 import FilmDetailPage from "./pages/FilmDetailPage";
 import Loading from "./components/Loading/Loading";
-import BookTicket from "./components/BookTicket/BookTicket";
+import BookingTicketPage from "./pages/BookingTicketPage";
 
 export const history = createBrowserHistory();
 function App() {
@@ -30,8 +30,8 @@ function App() {
         />
         <HomeTemplate
           exact={true}
-          path="/book-ticket/:id"
-          component={BookTicket}
+          path="/booking-ticket/:id"
+          component={BookingTicketPage}
         />
         <HomeTemplate exact={true} path="/" component={HomePage} />
         <AccountTemplate exact={true} path="/login" component={LoginForm} />

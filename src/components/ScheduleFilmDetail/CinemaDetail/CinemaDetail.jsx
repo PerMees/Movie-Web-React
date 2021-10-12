@@ -2,7 +2,7 @@ import React, { memo, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { GetCinemaAction } from "../../../redux/actions/CinemaAction";
 import { CHOOSE_CINEMA } from "../../../redux/types/CinemaType";
-import "./Cinema.css";
+import "./CinemaDetail.css";
 import _ from "lodash";
 
 function Cinema(props) {
@@ -51,7 +51,7 @@ function Cinema(props) {
     });
   };
   return (
-    <div className="cinemaList">
+    <div className="cinemaListDetail">
       <ul className="list-none flex flex-row md:flex-col w-1/6 overflow-x-scroll md:overflow-x-hidden md:overflow-y-scroll">
         {renderCinemas()}
       </ul>

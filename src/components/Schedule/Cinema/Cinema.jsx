@@ -39,7 +39,7 @@ function Cinema(props) {
     });
   };
   return (
-    <div className="w-full cinemaList">
+    <div className="w-full cinemaList md:ml-3">
       <ul className="list-none flex flex-row md:flex-col w-1/6">
         {renderCinemas()}
       </ul>

@@ -114,10 +114,10 @@ export default function ListFilm() {
             <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
               <a
                 className={
-                  "tabLink text-md hover:text-xl font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                  "tabLink text-lg hover:text-xl hover:text-gray-900 font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                   (openTab === 1
                     ? "text-white bg-red-600 text-xl"
-                    : "text-red-600 bg-white text-md")
+                    : "text-gray-900 bg-white text-md")
                 }
                 onClick={(e) => {
                   e.preventDefault();
@@ -133,10 +133,10 @@ export default function ListFilm() {
             <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
               <a
                 className={
-                  "tabLink text-md hover:text-xl font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                  "tabLink text-lg hover:text-xl hover:text-gray-900 font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                   (openTab === 2
                     ? "text-white bg-red-600 text-xl"
-                    : "text-red-600 bg-white text-md")
+                    : "text-gray-900 bg-white text-md")
                 }
                 onClick={(e) => {
                   e.preventDefault();
@@ -152,10 +152,10 @@ export default function ListFilm() {
             <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
               <a
                 className={
-                  "tabLink text-md hover:text-xl font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                  "tabLink text-lg hover:text-xl hover:text-gray-900 font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                   (openTab === 3
                     ? "text-white bg-red-600 text-xl"
-                    : "text-red-600 bg-white text-md")
+                    : "text-gray-900 bg-white text-md")
                 }
                 onClick={(e) => {
                   e.preventDefault();
