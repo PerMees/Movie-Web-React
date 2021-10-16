@@ -137,30 +137,12 @@ function Header() {
               <NavLink
                 to="/register"
                 className="header__btn mx-2 font-bold text-gray-900"
-                style={
-                  navbarOpen
-                    ? {
-                        backgroundColor: "#fff4ed",
-                      }
-                    : {
-                        backgroundColor: "transparent",
-                      }
-                }
               >
                 Đăng ký
               </NavLink>
               <NavLink
                 to="/login"
                 className="header__btn mx-2 font-bold text-gray-900"
-                style={
-                  navbarOpen
-                    ? {
-                        backgroundColor: "#fff4ed",
-                      }
-                    : {
-                        backgroundColor: "transparent",
-                      }
-                }
               >
                 Đăng nhập
               </NavLink>

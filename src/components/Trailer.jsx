@@ -39,7 +39,11 @@ function Trailer() {
       <iframe
         className="w-full "
         style={{ height: `${height}vh` }}
-        src={filmChoice.trailer}
+        src={
+          filmChoice?.trailer?.includes("http")
+            ? filmChoice.trailer
+            : "https://www.youtube.com/embed/eHsWYmnXk1o"
+        }
         title="YouTube video player"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

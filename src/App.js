@@ -10,7 +10,9 @@ import { createBrowserHistory } from "history";
 import FilmDetailPage from "./pages/FilmDetailPage";
 import Loading from "./components/Loading/Loading";
 import BookingTicketPage from "./pages/BookingTicketPage";
-
+import AdminTemplate from "./templates/AdminTemplate";
+import ManageFilmPage from "./pages/ManageFilmPage";
+import ManageUserPage from "./pages/ManageUserPage";
 export const history = createBrowserHistory();
 function App() {
   return (
@@ -40,6 +42,9 @@ function App() {
           path="/register"
           component={RegisterForm}
         />
+        <AdminTemplate exact={true} path="/admin" component={ManageFilmPage} />
+        <AdminTemplate exact={true} path="/admin/film" component={ManageFilmPage} />
+        <AdminTemplate exact={true} path="/admin/user" component={ManageUserPage} />
         <HomeTemplate exact={false} path="*" component={NotFoundPage} />
       </Switch>
     </Router>

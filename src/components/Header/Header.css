@@ -26,7 +26,7 @@
 .header__btn {
   font-size: 1rem;
   border-radius: 8px;
-  padding: 0 0.3rem;
+  padding: 0 0.5rem;
 }
 .header__btn:hover,
 .header a.header__navLink:hover {

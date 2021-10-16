@@ -6,14 +6,6 @@ import Schedule from "../components/Schedule/Schedule";
 import { DONE_LOADING, START_LOADING } from "../redux/types/LoadingType";
 
 export default function HomePage(props) {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    document.title = "Movie";
-    setTimeout(() => {
-      dispatch({ type: DONE_LOADING });
-    }, 1000);
-    dispatch({ type: START_LOADING });
-  }, []);
   return (
     <Fragment>
       <Carousel />

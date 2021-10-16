@@ -10,15 +10,8 @@ export default function FilmDetailPage(props) {
   const { filmChoice } = useSelector((state) => state.FilmReducer);
   const dispatch = useDispatch();
   useEffect(() => {
-    async function run() {
-      const action = GetFilmByIdAction(props.match.params.id);
-      await dispatch(action);
-      setTimeout(() => {
-        dispatch({ type: DONE_LOADING });
-      }, 1000);
-      dispatch({ type: START_LOADING });
-    }
-    run();
+    const action = GetFilmByIdAction(props.match.params.id);
+    dispatch(action);
   }, []);
   useEffect(() => {
     document.title = filmChoice.tenPhim;

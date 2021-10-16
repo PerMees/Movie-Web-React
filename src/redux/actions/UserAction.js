@@ -20,11 +20,14 @@ export const LoginAction = (account) => {
   return (dispatch) => {
     let promise = http.post("/api/QuanLyNguoiDung/DangNhap", account);
     promise.then((result) => {
-      const { taiKhoan, hoTen, accessToken } = result.data.content;
+      console.log(result.data.content);
       localStorage.setItem(ACCESS_TOKEN, result.data.content.accessToken);
       localStorage.setItem(USER_ACCOUNT, JSON.stringify(result.data.content));
       alert("Đăng nhập thành công!");
-      history.push("/");
+      console.log(result.data.content.maLoaiNguoiDung);
+      if (result.data.content.maLoaiNguoiDung === "KhachHang")
+        history.push("/");
+      return history.push("/admin");
     });
     promise.catch((err) => {
       alert("Đăng nhập thất bại, vui lòng kiểm tra tên đăng nhập và mật khẩu");

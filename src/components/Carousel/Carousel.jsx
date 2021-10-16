@@ -53,7 +53,7 @@ function Carousel(props) {
             alt="Banner Film"
             onError={(e) => {
               e.target.onerror = null;
-              e.target.src = `https://picsum.photos/150/200?random=${index}`;
+              e.target.src = `https://picsum.photos/1920/1080?random=${index}`;
             }}
             className="carousel__item"
           />
