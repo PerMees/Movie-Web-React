@@ -1,10 +1,12 @@
 import { GET_CINEMAS, GET_SUB_CINEMAS } from "../types/CinemaType";
-import { http } from "../../util/setting";
+import {
+  GetCinemaService,
+  GetSubCinemaService,
+} from "../services/CinemaService";
 
 export const GetCinemaAction = () => {
   return (dispatch) => {
-    let promise = http.get(`/api/QuanLyRap/LayThongTinHeThongRap`);
-
+    let promise = GetCinemaService();
     promise.then((result) => {
       dispatch({ type: GET_CINEMAS, arrCinema: result.data.content });
     });
@@ -16,10 +18,7 @@ export const GetCinemaAction = () => {
 
 export const GetSubCinemaAction = (maRap = "BHDStar") => {
   return (dispatch) => {
-    let promise = http.get(
-      `/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maRap}`
-    );
-
+    let promise = GetSubCinemaService(maRap);
     promise.then((result) => {
       dispatch({ type: GET_SUB_CINEMAS, arrSubCinema: result.data.content });
     });

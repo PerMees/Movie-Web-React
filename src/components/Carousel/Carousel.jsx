@@ -7,7 +7,7 @@ import {
   ToggleTrailerAction,
   GetFilmByIdAction,
 } from "../../redux/actions/FilmAction";
-import Trailer from "../Trailer";
+import Trailer from "../Trailer/Trailer";
 
 const PrevArrow = (props) => {
   const { onClick } = props;

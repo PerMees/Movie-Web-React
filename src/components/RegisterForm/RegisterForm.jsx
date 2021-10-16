@@ -2,8 +2,8 @@ import { useFormik } from "formik";
 import React, { useEffect, memo } from "react";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
-import { REGEX_ASCII } from "../util/setting";
-import { RegisterAction } from "../redux/actions/UserAction";
+import { REGEX_ASCII } from "../../util/setting";
+import { RegisterAction } from "../../redux/actions/UserAction";
 
 function RegisterForm() {
   const dispatch = useDispatch();

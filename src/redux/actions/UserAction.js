@@ -1,12 +1,11 @@
-import { ACCESS_TOKEN, http, USER_ACCOUNT } from "../../util/setting";
+import { ACCESS_TOKEN, USER_ACCOUNT } from "../../util/setting";
 import { history } from "../../App";
+import { LoginService, RegisterService } from "../services/UserServices";
 
 export const RegisterAction = (user) => {
   return (dispatch) => {
-    let promise = http.post(`/api/QuanLyNguoiDung/DangKy`, user);
+    let promise = RegisterService(user);
     promise.then((result) => {
-      const { taiKhoan, hoTen } = result.data.content;
-      console.log(result.data.content);
       alert("Đăng ký thành công!");
       history.push("/login");
     });
@@ -18,7 +17,7 @@ export const RegisterAction = (user) => {
 
 export const LoginAction = (account) => {
   return (dispatch) => {
-    let promise = http.post("/api/QuanLyNguoiDung/DangNhap", account);
+    let promise = LoginService(account);
     promise.then((result) => {
       console.log(result.data.content);
       localStorage.setItem(ACCESS_TOKEN, result.data.content.accessToken);

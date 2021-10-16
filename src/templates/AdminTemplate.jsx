@@ -103,7 +103,10 @@ const AdminTemplate = (props) => {
                   </Dropdown>
                 </div>
               </Header>
-              <Content style={{ margin: "18px 16px " }}>
+              <Content
+                style={{ margin: "18px 16px " }}
+                className="bg-white shadow-md h-full"
+              >
                 <props.component {...propsRoute} />
               </Content>
             </Layout>

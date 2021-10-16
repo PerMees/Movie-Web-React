@@ -6,13 +6,17 @@ import {
   GET_FILMS_OF_CINEMA,
   GET_SCHEDULE_OF_FILM,
 } from "../types/FilmType";
-import { http, GROUP_ID } from "../../util/setting";
+import {
+  GetBannerService,
+  GetFilmByIdService,
+  GetFilmOfCinemaService,
+  GetListFilmService,
+  GetScheduleOfFilmService,
+} from "../services/FilmService";
 
 export const GetListFilmAction = () => {
   return (dispatch) => {
-    let promise = http.get(
-      `/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}`
-    );
+    let promise = GetListFilmService();
     promise.then((result) => {
       dispatch({ type: GET_FILMS, arrFilm: result.data.content });
     });
@@ -24,7 +28,7 @@ export const GetListFilmAction = () => {
 
 export const GetBannerAction = () => {
   return (dispatch) => {
-    let promise = http.get(`/api/QuanLyPhim/LayDanhSachBanner`);
+    let promise = GetBannerService();
     promise
       .then((result) => {
         dispatch({ type: GET_BANNERS, arrBanner: result.data.content });
@@ -37,7 +41,7 @@ export const GetBannerAction = () => {
 
 export const GetFilmByIdAction = (id) => {
   return (dispatch) => {
-    let promise = http.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`);
+    let promise = GetFilmByIdService(id);
     promise.then((result) => {
       dispatch({ type: GET_FILM_BY_ID, filmChoice: result.data.content });
     });
@@ -49,10 +53,7 @@ export const GetFilmByIdAction = (id) => {
 
 export const GetFilmOfCinemaAction = (maRap = "BHDStar") => {
   return (dispatch) => {
-    let promise = http.get(
-      `/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maRap}&maNhom=${GROUP_ID}`
-    );
-
+    let promise = GetFilmOfCinemaService(maRap);
     promise.then((result) => {
       dispatch({
         type: GET_FILMS_OF_CINEMA,
@@ -67,10 +68,7 @@ export const GetFilmOfCinemaAction = (maRap = "BHDStar") => {
 
 export const GetScheduleOfFilmAction = (maPhim) => {
   return (dispatch) => {
-    let promise = http.get(
-      `/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`
-    );
-
+    let promise = GetScheduleOfFilmService(maPhim);
     promise.then((result) => {
       dispatch({
         type: GET_SCHEDULE_OF_FILM,

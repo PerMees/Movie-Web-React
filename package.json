@@ -31,7 +31,7 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "deploy":"yarn build && cd build && cp index.html 200.html && rm index.html"
+    "deploy": "yarn build && cd build && cp index.html 200.html && rm index.html"
   },
   "eslintConfig": {
     "extends": [

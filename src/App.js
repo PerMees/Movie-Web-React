@@ -4,8 +4,8 @@ import HomeTemplate from "./templates/HomeTemplate";
 import AccountTemplate from "./templates/AccountTemplate";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import LoginForm from "./components/LoginForm.jsx";
-import RegisterForm from "./components/RegisterForm.jsx";
+import LoginForm from "./components/LoginForm/LoginForm.jsx";
+import RegisterForm from "./components/RegisterForm/RegisterForm.jsx";
 import { createBrowserHistory } from "history";
 import FilmDetailPage from "./pages/FilmDetailPage";
 import Loading from "./components/Loading/Loading";
@@ -43,8 +43,16 @@ function App() {
           component={RegisterForm}
         />
         <AdminTemplate exact={true} path="/admin" component={ManageFilmPage} />
-        <AdminTemplate exact={true} path="/admin/film" component={ManageFilmPage} />
-        <AdminTemplate exact={true} path="/admin/user" component={ManageUserPage} />
+        <AdminTemplate
+          exact={true}
+          path="/admin/film"
+          component={ManageFilmPage}
+        />
+        <AdminTemplate
+          exact={true}
+          path="/admin/user"
+          component={ManageUserPage}
+        />
         <HomeTemplate exact={false} path="*" component={NotFoundPage} />
       </Switch>
     </Router>

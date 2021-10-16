@@ -1,0 +1,1 @@
+export const OPEN_ADMIN_MODEL = 'OPEN_ADMIN_MODEL'

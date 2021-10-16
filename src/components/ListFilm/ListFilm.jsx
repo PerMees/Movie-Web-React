@@ -4,7 +4,7 @@ import "./ListFilm.css";
 import Slider from "react-slick";
 import { NavLink } from "react-router-dom";
 import { GetListFilmAction } from "../../redux/actions/FilmAction";
-import Trailer from "../Trailer";
+import Trailer from "../Trailer/Trailer";
 
 function PrevArrow(props) {
   const { className, onClick } = props;

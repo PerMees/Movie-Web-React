@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import { NavLink } from "react-router-dom";
 import * as Yup from "yup";
-import { LoginAction } from "../redux/actions/UserAction";
+import { LoginAction } from "../../redux/actions/UserAction";
 import { useDispatch } from "react-redux";
 
 export default function LoginForm() {

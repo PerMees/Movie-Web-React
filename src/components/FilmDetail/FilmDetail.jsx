@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./FilmDetail.css";
 import moment from "moment";
-import Trailer from "../Trailer";
+import Trailer from "../Trailer/Trailer";
 import { ToggleTrailerAction } from "../../redux/actions/FilmAction";
 import { Progress } from "antd";
 import { CustomCard } from "@tsamantanis/react-glassmorphism";

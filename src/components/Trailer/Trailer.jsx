@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ToggleTrailerAction } from "../redux/actions/FilmAction";
+import { ToggleTrailerAction } from "../../redux/actions/FilmAction";
 import { Modal } from "antd";
 
 let height = 30;
