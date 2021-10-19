@@ -1,10 +1,10 @@
 import { ACCESS_TOKEN, USER_ACCOUNT } from "../../util/setting";
 import { history } from "../../App";
-import { LoginService, RegisterService } from "../services/UserServices";
+import { userService } from "../services/UserServices";
 
 export const RegisterAction = (user) => {
   return (dispatch) => {
-    let promise = RegisterService(user);
+    let promise = userService.Register(user);
     promise.then((result) => {
       alert("Đăng ký thành công!");
       history.push("/login");
@@ -17,7 +17,7 @@ export const RegisterAction = (user) => {
 
 export const LoginAction = (account) => {
   return (dispatch) => {
-    let promise = LoginService(account);
+    let promise = userService.Login(account);
     promise.then((result) => {
       console.log(result.data.content);
       localStorage.setItem(ACCESS_TOKEN, result.data.content.accessToken);

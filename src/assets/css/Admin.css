@@ -39,3 +39,6 @@
 .admin .ant-layout-header {
   background-color: #fff;
 }
+.admin .ant-layout {
+  min-height: 100vh;
+}

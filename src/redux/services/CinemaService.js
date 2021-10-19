@@ -1,11 +1,13 @@
 import { http } from "../../util/setting";
 
-export const GetCinemaService = () => {
-  return http.get(`/api/QuanLyRap/LayThongTinHeThongRap`);
-};
-
-export const GetSubCinemaService = (maRap) => {
-  return http.get(
-    `/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maRap}`
-  );
-};
+class CinemaService {
+  GetCinema() {
+    return http.get(`/api/QuanLyRap/LayThongTinHeThongRap`);
+  }
+  GetSubCinema(maRap) {
+    return http.get(
+      `/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maRap}`
+    );
+  }
+}
+export const cinemaService = new CinemaService();

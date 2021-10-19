@@ -1,12 +1,9 @@
 import { GET_CINEMAS, GET_SUB_CINEMAS } from "../types/CinemaType";
-import {
-  GetCinemaService,
-  GetSubCinemaService,
-} from "../services/CinemaService";
+import { cinemaService } from "../services/CinemaService";
 
 export const GetCinemaAction = () => {
   return (dispatch) => {
-    let promise = GetCinemaService();
+    let promise = cinemaService.GetCinema();
     promise.then((result) => {
       dispatch({ type: GET_CINEMAS, arrCinema: result.data.content });
     });
@@ -18,7 +15,7 @@ export const GetCinemaAction = () => {
 
 export const GetSubCinemaAction = (maRap = "BHDStar") => {
   return (dispatch) => {
-    let promise = GetSubCinemaService(maRap);
+    let promise = cinemaService.GetSubCinema(maRap);
     promise.then((result) => {
       dispatch({ type: GET_SUB_CINEMAS, arrSubCinema: result.data.content });
     });

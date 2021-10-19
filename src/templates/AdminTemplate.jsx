@@ -2,12 +2,13 @@ import { NavLink, Route, Redirect } from "react-router-dom";
 import { useEffect } from "react";
 import { Layout, Menu, Dropdown } from "antd";
 import { UserOutlined, DownOutlined } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { DONE_LOADING, START_LOADING } from "../redux/types/LoadingType";
 import "../assets/css/Admin.css";
 import { USER_ACCOUNT } from "../util/setting";
 import * as _ from "lodash";
-const { Header, Content, Footer, Sider } = Layout;
+import AdminModal from "../components/AdminModal/AdminModal";
+const { Header, Content, Sider } = Layout;
 
 const AdminTemplate = (props) => {
   const dispatch = useDispatch();
@@ -45,72 +46,71 @@ const AdminTemplate = (props) => {
           ?.maLoaiNguoiDung !== "QuanTri" ? (
           <Redirect to="/" />
         ) : (
-          <Layout className="h-screen admin">
-            <Sider
-              breakpoint="md"
-              collapsedWidth="0"
-              onBreakpoint={(broken) => {
-                console.log(broken);
-              }}
-              onCollapse={(collapsed, type) => {
-                console.log(collapsed, type);
-              }}
-            >
-              <div className="logo">
-                <NavLink to="/">
-                  <img
-                    src="./logo/logo.png"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = "https://picsum.photos/200";
-                    }}
-                    alt=""
-                    className="mx-auto block w-12 mb-3 mt-6 rounded-lg"
-                  />
-                </NavLink>
-              </div>
-              <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-                <Menu.Item key="1" icon={<i className="fas fa-film"></i>}>
-                  <NavLink to="/admin/film">Quản lý phim</NavLink>
-                </Menu.Item>
-                <Menu.Item key="2" icon={<UserOutlined />}>
-                  <NavLink to="/admin/user">Quản lý người dùng</NavLink>
-                </Menu.Item>
-              </Menu>
-            </Sider>
-            <Layout className="site-layout">
-              <Header
-                className="site-layout-sub-header-background bg-white shadow-md"
-                style={{ padding: 0 }}
+          <>
+            <AdminModal {...propsRoute} />
+            <Layout className="admin">
+              <Sider
+                breakpoint="md"
+                collapsedWidth="0"
+                onBreakpoint={(broken) => {}}
+                onCollapse={(collapsed, type) => {}}
               >
-                <div className="flex items-center justify-end text-center text-white h-full">
-                  <Dropdown overlay={menu} trigger={["click"]}>
-                    <a
-                      className="ant-dropdown-link text-base font-bold mr-4 text-white hover:text-red-600 flex justify-center items-center"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <p className="rounded-full bg-white text-black w-10 h-10 m-0 mr-1 flex items-center justify-center  transition-all duration-300">
-                        <span>
-                          {_.upperCase(
-                            JSON.parse(
-                              localStorage.getItem(USER_ACCOUNT)
-                            ).hoTen.substring(0, 2)
-                          )}
-                        </span>
-                      </p>
-                      <DownOutlined />
-                    </a>
-                  </Dropdown>
+                <div className="logo">
+                  <NavLink to="/">
+                    <img
+                      src="./logo/logo.png"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "https://picsum.photos/200";
+                      }}
+                      alt=""
+                      className="mx-auto block w-12 mb-3 mt-6 rounded-lg"
+                    />
+                  </NavLink>
                 </div>
-              </Header>
-              <Content
-                style={{ margin: "18px 16px " }}
-                className="bg-white shadow-md h-full"
-              >
-                <props.component {...propsRoute} />
-              </Content>
+                <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+                  <Menu.Item key="1" icon={<i className="fas fa-film"></i>}>
+                    <NavLink to="/admin/film">Quản lý phim</NavLink>
+                  </Menu.Item>
+                  <Menu.Item key="2" icon={<UserOutlined />}>
+                    <NavLink to="/admin/user">Quản lý người dùng</NavLink>
+                  </Menu.Item>
+                </Menu>
+              </Sider>
+              <Layout className="site-layout">
+                <Header
+                  className="site-layout-sub-header-background bg-white shadow-md"
+                  style={{ padding: 0 }}
+                >
+                  <div className="flex items-center justify-end text-center text-white h-full">
+                    <Dropdown overlay={menu} trigger={["click"]}>
+                      <a
+                        className="ant-dropdown-link text-base font-bold mr-4 text-white hover:text-red-600 flex justify-center items-center"
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        <p className="rounded-full bg-white text-black w-10 h-10 m-0 mr-1 flex items-center justify-center  transition-all duration-300">
+                          <span>
+                            {_.upperCase(
+                              JSON.parse(
+                                localStorage.getItem(USER_ACCOUNT)
+                              ).hoTen.substring(0, 2)
+                            )}
+                          </span>
+                        </p>
+                        <DownOutlined />
+                      </a>
+                    </Dropdown>
+                  </div>
+                </Header>
+                <Content
+                  style={{ margin: "18px 16px " }}
+                  className="bg-white shadow-md h-full"
+                >
+                  <props.component {...propsRoute} />
+                </Content>
+              </Layout>
             </Layout>
-          </Layout>
+          </>
         );
       }}
     />

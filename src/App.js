@@ -11,8 +11,8 @@ import FilmDetailPage from "./pages/FilmDetailPage";
 import Loading from "./components/Loading/Loading";
 import BookingTicketPage from "./pages/BookingTicketPage";
 import AdminTemplate from "./templates/AdminTemplate";
-import ManageFilmPage from "./pages/ManageFilmPage";
-import ManageUserPage from "./pages/ManageUserPage";
+import ManageFilmPage from "./pages/ManageFilmPage/ManageFilmPage";
+import ManageUserPage from "./pages/ManageUserPage/ManageUserPage";
 export const history = createBrowserHistory();
 function App() {
   return (

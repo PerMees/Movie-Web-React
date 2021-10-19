@@ -6,17 +6,11 @@ import {
   GET_FILMS_OF_CINEMA,
   GET_SCHEDULE_OF_FILM,
 } from "../types/FilmType";
-import {
-  GetBannerService,
-  GetFilmByIdService,
-  GetFilmOfCinemaService,
-  GetListFilmService,
-  GetScheduleOfFilmService,
-} from "../services/FilmService";
+import { filmService } from "../services/FilmService";
 
 export const GetListFilmAction = () => {
   return (dispatch) => {
-    let promise = GetListFilmService();
+    let promise = filmService.GetListFilm();
     promise.then((result) => {
       dispatch({ type: GET_FILMS, arrFilm: result.data.content });
     });
@@ -28,7 +22,7 @@ export const GetListFilmAction = () => {
 
 export const GetBannerAction = () => {
   return (dispatch) => {
-    let promise = GetBannerService();
+    let promise = filmService.GetBanner();
     promise
       .then((result) => {
         dispatch({ type: GET_BANNERS, arrBanner: result.data.content });
@@ -41,7 +35,7 @@ export const GetBannerAction = () => {
 
 export const GetFilmByIdAction = (id) => {
   return (dispatch) => {
-    let promise = GetFilmByIdService(id);
+    let promise = filmService.GetFilmById(id);
     promise.then((result) => {
       dispatch({ type: GET_FILM_BY_ID, filmChoice: result.data.content });
     });
@@ -53,7 +47,7 @@ export const GetFilmByIdAction = (id) => {
 
 export const GetFilmOfCinemaAction = (maRap = "BHDStar") => {
   return (dispatch) => {
-    let promise = GetFilmOfCinemaService(maRap);
+    let promise = filmService.GetFilmOfCinema(maRap);
     promise.then((result) => {
       dispatch({
         type: GET_FILMS_OF_CINEMA,
@@ -68,7 +62,7 @@ export const GetFilmOfCinemaAction = (maRap = "BHDStar") => {
 
 export const GetScheduleOfFilmAction = (maPhim) => {
   return (dispatch) => {
-    let promise = GetScheduleOfFilmService(maPhim);
+    let promise = filmService.GetScheduleOfFilm(maPhim);
     promise.then((result) => {
       dispatch({
         type: GET_SCHEDULE_OF_FILM,

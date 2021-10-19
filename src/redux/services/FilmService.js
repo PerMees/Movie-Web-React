@@ -1,23 +1,30 @@
 import { GROUP_ID, http } from "../../util/setting";
 
-export const GetListFilmService = () => {
-  return http.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}`);
-};
+class FilmService {
+  GetListFilm() {
+    return http.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}`);
+  }
 
-export const GetFilmByIdService = (id) => {
-  return http.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`);
-};
+  GetFilmById(id) {
+    return http.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`);
+  }
 
-export const GetFilmOfCinemaService = (maRap) => {
-  return http.get(
-    `/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maRap}&maNhom=${GROUP_ID}`
-  );
-};
+  GetFilmOfCinema(maRap) {
+    return http.get(
+      `/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maRap}&maNhom=${GROUP_ID}`
+    );
+  }
 
-export const GetScheduleOfFilmService = (maPhim) => {
-  return http.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`);
-};
+  GetScheduleOfFilm(maPhim) {
+    return http.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`);
+  }
 
-export const GetBannerService = () => {
-  return http.get(`/api/QuanLyPhim/LayDanhSachBanner`);
-};
+  GetBanner() {
+    return http.get(`/api/QuanLyPhim/LayDanhSachBanner`);
+  }
+
+  DeleteFilm(maPhim) {
+    return http.delete(`/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
+  }
+}
+export const filmService = new FilmService();
