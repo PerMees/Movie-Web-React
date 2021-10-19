@@ -23,6 +23,10 @@ class FilmService {
     return http.get(`/api/QuanLyPhim/LayDanhSachBanner`);
   }
 
+  AddFilm(formData) {
+    return http.post(`/api/QuanLyPhim/ThemPhimUploadHinh`, formData);
+  }
+
   DeleteFilm(maPhim) {
     return http.delete(`/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
   }

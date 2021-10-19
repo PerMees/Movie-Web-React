@@ -22,6 +22,7 @@ export default function AdminModal() {
         onOk={() => dispatch(CloseAdminModelAction())}
         onCancel={() => dispatch(CloseAdminModelAction())}
         width={1000}
+        footer={null}
       >
         {component}
       </Modal>

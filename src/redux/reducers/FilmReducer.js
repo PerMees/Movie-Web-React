@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { DELETE_FILM } from "../types/AdminType";
+import { ADD_FILM, DELETE_FILM } from "../types/AdminType";
 import {
   GET_FILMS,
   GET_BANNERS,
@@ -42,6 +42,10 @@ export default (state = initialState, action) => {
     }
     case GET_SCHEDULE_OF_FILM: {
       state.filmDetail = action.filmDetail;
+      return { ...state };
+    }
+    case ADD_FILM: {
+      state.arrFilm.push(action.film);
       return { ...state };
     }
     case DELETE_FILM: {
