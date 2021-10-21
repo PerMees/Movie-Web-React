@@ -27,6 +27,10 @@ class FilmService {
     return http.post(`/api/QuanLyPhim/ThemPhimUploadHinh`, formData);
   }
 
+  EditFilm(formData) {
+    return http.post(`/api/QuanLyPhim/CapNhatPhimUpload`, formData);
+  }
+
   DeleteFilm(maPhim) {
     return http.delete(`/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
   }

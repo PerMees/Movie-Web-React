@@ -6,22 +6,25 @@ import moment from "moment";
 import { NavLink } from "react-router-dom";
 
 export default function Film() {
-  const [films, setFilms] = useState([]);
   const { arrFilmsOfCinema } = useSelector((state) => state.FilmReducer);
-  const { cinemaChoice, subCinemaChoice, arrSubCinema } = useSelector(
-    (state) => state.CinemaReducer
-  );
+  const { cinemaChoice, subCinemaChoice, arrSubCinema, arrCinema } =
+    useSelector((state) => state.CinemaReducer);
   const dispatch = useDispatch();
-  const action = GetFilmOfCinemaAction();
-  moment.updateLocale("vi");
 
   useEffect(() => {
+    const action = GetFilmOfCinemaAction(arrCinema[cinemaChoice]?.maHeThongRap);
     dispatch(action);
+  }, [cinemaChoice]);
+  useEffect(() => {}, [subCinemaChoice]);
 
-    if (arrSubCinema.length > 0) {
-      setFilms(arrFilmsOfCinema[0]?.lstCumRap[subCinemaChoice]?.danhSachPhim);
-    }
-  }, [arrFilmsOfCinema, cinemaChoice, subCinemaChoice]);
+  const arrFilm = arrFilmsOfCinema[0]?.lstCumRap.filter(
+    (rap) => rap.maCumRap === arrSubCinema[subCinemaChoice]?.maCumRap
+  )[0]?.danhSachPhim;
+  console.log(
+    arrFilmsOfCinema[0]?.lstCumRap.filter(
+      (rap) => rap.maCumRap === arrSubCinema[subCinemaChoice]?.maCumRap
+    )
+  );
   const renderTime = (film) => {
     const arrTime = film?.lstLichChieuTheoPhim;
     let timeSet = new Set();
@@ -51,7 +54,7 @@ export default function Film() {
     return content;
   };
   const renderFilm = () => {
-    return films?.map((film, i) => {
+    return arrFilm?.map((film, i) => {
       if (film.dangChieu || film.sapChieu) {
         return (
           <li key={i} className="bg-white">

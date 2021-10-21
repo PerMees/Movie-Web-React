@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Input, Table } from "antd";
+import { useDispatch, useSelector } from "react-redux";
 import {
+  GetListFilmAction,
   DeleteFilmAction,
   OpenAdminModelAction,
-} from "../../redux/actions/AdminAction";
-import { useDispatch, useSelector } from "react-redux";
-import { GetListFilmAction } from "../../redux/actions/FilmAction";
+} from "../../redux/actions/FilmAction";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-import { Popconfirm, message } from "antd";
+import { Popconfirm } from "antd";
 
 const { Search } = Input;
 const onChange = (pagination, filters, sorter, extra) => {
@@ -80,7 +80,13 @@ export default function ManageFilmPage() {
       render: (text, film, index) => {
         return (
           <div className="flex items-center justify-center flex-col md:flex-row">
-            <button className="rounded bg-yellow-600 hover:bg-yellow-700 p-2 mx-1 my-2 text-white flex items-center justify-center">
+            <button
+              className="rounded bg-yellow-600 hover:bg-yellow-700 p-2 mx-1 my-2 text-white flex items-center justify-center"
+              onClick={() => {
+                const action = OpenAdminModelAction("EditFilm", film);
+                dispatch(action);
+              }}
+            >
               <EditOutlined />
             </button>
 

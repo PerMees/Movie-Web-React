@@ -1,5 +1,11 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { ADD_FILM, DELETE_FILM } from "../types/AdminType";
+import {
+  ADD_FILM,
+  CLOSE_ADMIN_MODEL,
+  DELETE_FILM,
+  EDIT_FILM,
+  OPEN_ADMIN_MODEL,
+} from "../types/AdminType";
 import {
   GET_FILMS,
   GET_BANNERS,
@@ -16,6 +22,8 @@ const initialState = {
   filmChoice: {},
   viewTrailer: false,
   filmDetail: {},
+  openModal: false,
+  componentType: "AddFilm",
 };
 
 export default (state = initialState, action) => {
@@ -48,12 +56,28 @@ export default (state = initialState, action) => {
       state.arrFilm.push(action.film);
       return { ...state };
     }
+    case EDIT_FILM: {
+      console.log(action.film);
+      // const arrFilmUpdate = [...state,state.arrFilm].filter(film=>film.maPhim)
+      return { ...state };
+    }
     case DELETE_FILM: {
       let filmsUpdate = [...state.arrFilm].filter(
         (film) => film.maPhim !== action.maPhim
       );
       state.arrFilm = filmsUpdate;
       return { ...state };
+    }
+    case OPEN_ADMIN_MODEL: {
+      return {
+        ...state,
+        openModal: true,
+        componentType: action.componentType,
+        filmChoice: action.film,
+      };
+    }
+    case CLOSE_ADMIN_MODEL: {
+      return { ...state, openModal: false, filmChoice: {} };
     }
     default:
       return { ...state };

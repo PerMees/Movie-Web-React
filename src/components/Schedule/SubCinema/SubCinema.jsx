@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GetSubCinemaAction } from "../../../redux/actions/CinemaAction";
+import { GetFilmOfCinemaAction } from "../../../redux/actions/FilmAction";
 import { CHOOSE_SUB_CINEMA } from "../../../redux/types/CinemaType";
 import "./SubCinema.css";
 

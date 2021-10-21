@@ -8,11 +8,12 @@ function Cinema(props) {
   const { arrCinema, cinemaChoice } = useSelector(
     (state) => state.CinemaReducer
   );
-  const action = GetCinemaAction();
   const dispatch = useDispatch();
   useEffect(() => {
+    const action = GetCinemaAction();
     dispatch(action);
   }, []);
+
   const renderCinemas = () => {
     return arrCinema.map((cinema, i) => {
       return (

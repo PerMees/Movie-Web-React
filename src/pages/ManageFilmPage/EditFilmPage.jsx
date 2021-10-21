@@ -1,31 +1,43 @@
-import React, { useState } from "react";
-import { Form, Input, DatePicker, Switch, Rate, Alert } from "antd";
+import React, { useState, useEffect } from "react";
+import { Form, Input, DatePicker, Switch, Rate } from "antd";
 import { useFormik } from "formik";
 import moment from "moment";
 import * as Yup from "yup";
 import { GROUP_ID, REGEX_URL } from "../../util/setting";
-import { AddFilmAction } from "../../redux/actions/FilmAction";
-import { useDispatch } from "react-redux";
+import {
+  CloseAdminModelAction,
+  EditFilmAction,
+} from "../../redux/actions/FilmAction";
+import { useDispatch, useSelector } from "react-redux";
 
 const { TextArea } = Input;
-export default function AddFilmPage() {
+export default function EditFilmPage() {
   const dispatch = useDispatch();
+  const { filmChoice } = useSelector((state) => state.FilmReducer);
   const [componentSize, setComponentSize] = useState("default");
   const [imgSrc, setImgSrc] = useState("");
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
   };
+  const [film, setFilm] = useState({});
+  useEffect(() => {
+    setFilm(filmChoice);
+    setImgSrc(filmChoice.hinhAnh);
+  }, [filmChoice]);
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      tenPhim: "",
-      trailer: "",
-      moTa: "",
-      ngayKhoiChieu: moment(Date.now()).format("DD/MM/YYYY"),
-      dangChieu: false,
-      sapChieu: false,
-      hot: false,
-      danhGia: 0,
+      maPhim: film.maPhim,
+      tenPhim: film.tenPhim,
+      trailer: film.trailer,
+      moTa: film.moTa,
+      ngayKhoiChieu: film.ngayKhoiChieu
+        ? moment(film.ngayKhoiChieu).format("DD/MM/YYYY")
+        : moment(Date.now()).format("DD/MM/YYYY"),
+      dangChieu: film.dangChieu,
+      sapChieu: film.sapChieu,
+      hot: film.hot,
+      danhGia: film.danhGia,
       hinhAnh: null,
       maNhom: GROUP_ID,
     },
@@ -41,12 +53,15 @@ export default function AddFilmPage() {
       let formData = new FormData();
       for (let key in values)
         if (key !== "hinhAnh") formData.append(key, values[key]);
-      formData.append(
-        "hinhAnh",
-        formik.values.hinhAnh,
-        formik.values.hinhAnh.name
-      );
-      const action = AddFilmAction(formData, values);
+      if (typeof values.hinhAnh !== "string" && values.hinhAnh !== null)
+        formData.append(
+          "hinhAnh",
+          formik.values.hinhAnh,
+          formik.values.hinhAnh.name
+        );
+      formData.append("maPhim", formik.values.maPhim);
+
+      const action = EditFilmAction(formData, values);
       dispatch(action);
     },
   });
@@ -56,11 +71,11 @@ export default function AddFilmPage() {
   const handleChangeSwitch = (name) => {
     return (value) => formik.setFieldValue(name, value);
   };
-  const handleChangeFile = (e) => {
+  const handleChangeFile = async (e) => {
     let file = e.target.files[0];
-    formik.setFieldValue("hinhAnh", file);
-
     // ? Tạo đối tượng để đọc file
+    await formik.setFieldValue("hinhAnh", file);
+
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (e) => {
@@ -86,6 +101,7 @@ export default function AddFilmPage() {
       >
         <Form.Item label="Tên phim">
           <Input
+            value={formik.values.tenPhim}
             name="tenPhim"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -96,6 +112,7 @@ export default function AddFilmPage() {
         </Form.Item>
         <Form.Item label="Trailer">
           <Input
+            value={formik.values.trailer}
             name="trailer"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -106,6 +123,7 @@ export default function AddFilmPage() {
         </Form.Item>
         <Form.Item label="Mô tả">
           <TextArea
+            value={formik.values.moTa}
             rows={4}
             name="moTa"
             onChange={formik.handleChange}
@@ -119,25 +137,32 @@ export default function AddFilmPage() {
           <DatePicker
             format="DD/MM/YYYY"
             onChange={handleChangeDatePicker}
-            defaultValue={moment(
-              moment(Date.now()).format("DD/MM/YYYY"),
-              "DD/MM/YYYY"
-            )}
+            allowClear={false}
+            value={moment(formik.values.ngayKhoiChieu, "DD/MM/YYYY")}
           />
         </Form.Item>
         <Form.Item label="Đang chiếu" valuePropName="checked">
-          <Switch onChange={handleChangeSwitch("dangChieu")} />
+          <Switch
+            onChange={handleChangeSwitch("dangChieu")}
+            checked={formik.values.dangChieu}
+          />
         </Form.Item>
         <Form.Item label="Sắp chiếu" valuePropName="checked">
-          <Switch onChange={handleChangeSwitch("sapChieu")} />
+          <Switch
+            onChange={handleChangeSwitch("sapChieu")}
+            checked={formik.values.sapChieu}
+          />
         </Form.Item>
         <Form.Item label="Hot" valuePropName="checked">
-          <Switch onChange={handleChangeSwitch("hot")} />
+          <Switch
+            onChange={handleChangeSwitch("hot")}
+            checked={formik.values.hot}
+          />
         </Form.Item>
         <Form.Item label="Đánh giá">
           <Rate
             allowHalf
-            defaultValue={0}
+            value={formik.values.danhGia}
             count="10"
             onChange={handleChangeSwitch("danhGia")}
           />
@@ -147,19 +172,38 @@ export default function AddFilmPage() {
           <input
             type="file"
             onChange={handleChangeFile}
-            accept="image/png, image/jpg, image/gif"
+            accept="image/png, image/jpg, image/gif, image/jpeg"
           />
           {imgSrc !== "" ? (
             <img src={imgSrc} alt="" style={{ width: 150, height: 200 }} />
           ) : null}
+          {formik.values.hinhAnh && imgSrc === "" ? (
+            <img
+              src={formik.values.hinhAnh}
+              alt=""
+              style={{ width: 150, height: 200 }}
+            />
+          ) : null}
         </Form.Item>
-        <Form.Item label="" className="justify-center items-center">
-          <button
-            className="bg-blue-500 hover:bg-blue-600 text-white rounded-md px-1 py-2 text-center mx-auto block"
-            type="submit"
-          >
-            Thêm phim
-          </button>
+        <Form.Item className="justify-center items-center">
+          <div className="flex flex-row justify-center items-center">
+            <button
+              className="bg-yellow-500 hover:bg-yellow-600 text-white rounded-md px-2 py-2 mx-2 "
+              type="submit"
+            >
+              Chỉnh sửa
+            </button>
+            <button
+              className="bg-red-500 hover:bg-red-600 text-white rounded-md px-2 py-2 mx-2"
+              type="button"
+              onClick={() => {
+                const action = CloseAdminModelAction();
+                dispatch(action);
+              }}
+            >
+              Hủy bỏ
+            </button>
+          </div>
         </Form.Item>
       </Form>
     </>
