@@ -7,6 +7,7 @@ import { ToggleTrailerAction } from "../../redux/actions/FilmAction";
 import { Progress } from "antd";
 import { CustomCard } from "@tsamantanis/react-glassmorphism";
 import "@tsamantanis/react-glassmorphism/dist/index.css";
+import { NavLink } from "react-router-dom";
 
 export default function FilmDetail() {
   const { filmChoice } = useSelector((state) => state.FilmReducer);
@@ -34,6 +35,10 @@ export default function FilmDetail() {
             src={filmChoice.hinhAnh}
             alt=""
             className=" h-80 w-56 mx-auto block rounded"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = "https://picsum.photos/200/300";
+            }}
           />
           <div className="col-span-2 mt-4 md:mt-0 md:ml-5">
             <h3 className="text-2xl text-white font-bold  xl:w-3/4">
@@ -60,10 +65,13 @@ export default function FilmDetail() {
                     >
                       Xem Trailer
                     </button>
-                    <button className="bg-red-600 hover:bg-red-700 p-2 w-32 my-2 text-center block rounded">
+                    <NavLink
+                      to={`/booking-ticket/${filmChoice.maPhim}`}
+                      className="bg-red-600  text-white hover:text-white transition-all duration-300 hover:bg-red-700 p-2 w-32 my-2 text-center block rounded"
+                    >
                       <i className="fas fa-ticket-alt inline-block mr-1"></i>
                       Mua vé ngay
-                    </button>
+                    </NavLink>
                   </span>
                 </li>
               </ul>
