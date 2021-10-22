@@ -6,6 +6,7 @@ export default function BookingTicketPage(props) {
   const { filmChoice } = useSelector((state) => state.FilmReducer);
 
   const dispatch = useDispatch();
+  console.log(props.match.params.id);
   useEffect(() => {
     const action = GetFilmByIdAction(props.match.params.id);
     dispatch(action);

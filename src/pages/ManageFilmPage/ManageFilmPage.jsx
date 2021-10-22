@@ -6,23 +6,30 @@ import {
   DeleteFilmAction,
   OpenAdminModelAction,
 } from "../../redux/actions/FilmAction";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import {
+  EditOutlined,
+  DeleteOutlined,
+  CalendarOutlined,
+} from "@ant-design/icons";
 import { Popconfirm } from "antd";
 
 const { Search } = Input;
-const onChange = (pagination, filters, sorter, extra) => {
-  console.log("params", pagination, filters, sorter, extra);
-};
-const onEnter = (e) => console.log(e.target.value);
-const onSearch = (value) => console.log(value);
 
 export default function ManageFilmPage() {
   const { arrFilm } = useSelector((state) => state.FilmReducer);
+  const [valSearch, setValSearch] = useState("");
+  const onSearch = (value) => {
+    setValSearch(value);
+  };
+  const onEnter = (e) => {
+    setValSearch(e.target.value);
+  };
+
   const dispatch = useDispatch();
   useEffect(() => {
-    const action = GetListFilmAction();
+    const action = GetListFilmAction(valSearch);
     dispatch(action);
-  }, []);
+  }, [valSearch]);
   const confirm = (film) => {
     const action = DeleteFilmAction(film.maPhim);
     dispatch(action);
@@ -89,7 +96,6 @@ export default function ManageFilmPage() {
             >
               <EditOutlined />
             </button>
-
             <Popconfirm
               title={`Bạn có chắc muốn xóa phim ${film.tenPhim} không?`}
               onConfirm={() => confirm(film)}
@@ -100,6 +106,15 @@ export default function ManageFilmPage() {
                 <DeleteOutlined />
               </button>
             </Popconfirm>
+            <button
+              className="rounded bg-blue-600 hover:bg-blue-700 p-2 mx-1 my-2 text-white flex items-center justify-center"
+              onClick={() => {
+                const action = OpenAdminModelAction("AddShowTime", film);
+                dispatch(action);
+              }}
+            >
+              <CalendarOutlined />
+            </button>
           </div>
         );
       },
@@ -134,7 +149,6 @@ export default function ManageFilmPage() {
         scroll={{ x: 700 }}
         columns={columns}
         dataSource={data}
-        onChange={onChange}
         rowKey="maPhim"
       />
     </div>

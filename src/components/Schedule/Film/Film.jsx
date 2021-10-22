@@ -20,11 +20,6 @@ export default function Film() {
   const arrFilm = arrFilmsOfCinema[0]?.lstCumRap.filter(
     (rap) => rap.maCumRap === arrSubCinema[subCinemaChoice]?.maCumRap
   )[0]?.danhSachPhim;
-  console.log(
-    arrFilmsOfCinema[0]?.lstCumRap.filter(
-      (rap) => rap.maCumRap === arrSubCinema[subCinemaChoice]?.maCumRap
-    )
-  );
   const renderTime = (film) => {
     const arrTime = film?.lstLichChieuTheoPhim;
     let timeSet = new Set();

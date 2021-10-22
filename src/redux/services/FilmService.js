@@ -1,7 +1,11 @@
 import { GROUP_ID, http } from "../../util/setting";
 
 class FilmService {
-  GetListFilm() {
+  GetListFilm(tenPhim) {
+    if (tenPhim !== "")
+      return http.get(
+        `/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}&tenPhim=${tenPhim}`
+      );
     return http.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}`);
   }
 

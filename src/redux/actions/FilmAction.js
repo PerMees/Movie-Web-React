@@ -16,9 +16,9 @@ import {
 } from "../types/AdminType";
 import { message } from "antd";
 
-export const GetListFilmAction = () => {
+export const GetListFilmAction = (tenPhim = "") => {
   return (dispatch) => {
-    let promise = filmService.GetListFilm();
+    let promise = filmService.GetListFilm(tenPhim);
     promise.then((result) => {
       dispatch({ type: GET_FILMS, arrFilm: result.data.content });
     });
@@ -114,7 +114,6 @@ export const AddFilmAction = (formData, film) => {
 };
 export const EditFilmAction = (formData, film) => {
   return (dispatch) => {
-    console.log(formData.get("maPhim"));
     let promise = filmService.EditFilm(formData);
     promise.then((res) => {
       message.success("Chỉnh sửa phim thành công!");
@@ -123,7 +122,7 @@ export const EditFilmAction = (formData, film) => {
     });
     promise.catch((err) => {
       message.error("Chỉnh sửa phim thất bại!");
-      console.log(err.response?.data);
+      console.log(err);
     });
   };
 };

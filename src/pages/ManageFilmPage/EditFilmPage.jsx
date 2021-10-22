@@ -59,8 +59,6 @@ export default function EditFilmPage() {
           formik.values.hinhAnh,
           formik.values.hinhAnh.name
         );
-      formData.append("maPhim", formik.values.maPhim);
-
       const action = EditFilmAction(formData, values);
       dispatch(action);
     },
@@ -106,9 +104,9 @@ export default function EditFilmPage() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
-          {formik.touched.tenPhim && formik.errors.tenPhim ? (
+          {/* {formik.touched.tenPhim && formik.errors.tenPhim ? (
             <p className=" bg-red-200 m-0">{formik.errors.tenPhim}</p>
-          ) : null}
+          ) : null} */}
         </Form.Item>
         <Form.Item label="Trailer">
           <Input

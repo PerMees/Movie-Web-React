@@ -25,10 +25,10 @@ export default function FilmDetail() {
         }}
       >
         <CustomCard
-          effectColor="#000" // required
-          color="#000" // default color is white
-          blur={20} // default blur value is 10px
-          borderRadius={-1} // default border radius value is 10px
+          effectColor="#000"
+          color="#000"
+          blur={20}
+          borderRadius={-1}
           className="w-screen grid grid-cols-1 sm:grid-cols-3 p-10 rounded-none"
         >
           <img

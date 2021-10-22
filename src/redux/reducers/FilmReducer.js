@@ -57,8 +57,12 @@ export default (state = initialState, action) => {
       return { ...state };
     }
     case EDIT_FILM: {
-      console.log(action.film);
-      // const arrFilmUpdate = [...state,state.arrFilm].filter(film=>film.maPhim)
+      console.log(action.film.maPhim);
+      const arrFilmUpdate = [...state.arrFilm].filter(
+        (film) => film.maPhim !== action.film.maPhim
+      );
+      arrFilmUpdate.push(action.film);
+      state.arrFilm = arrFilmUpdate;
       return { ...state };
     }
     case DELETE_FILM: {

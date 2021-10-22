@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CloseAdminModelAction } from "../../redux/actions/FilmAction";
 import AddFilmPage from "../../pages/ManageFilmPage/AddFilmPage";
 import EditFilmPage from "../../pages/ManageFilmPage/EditFilmPage";
+import AddShowTimePage from "../../pages/ManageFilmPage/AddShowTimePage";
 export default function AdminModal() {
   const { openModal, componentType } = useSelector(
     (state) => state.FilmReducer
@@ -16,7 +17,11 @@ export default function AdminModal() {
   } else if (componentType === "EditFilm") {
     component = <EditFilmPage />;
     title = "Chỉnh sửa phim";
+  } else if (componentType === "AddShowTime") {
+    component = <AddShowTimePage />;
+    title = "Tạo lịch chiếu";
   }
+
   return (
     <>
       <Modal

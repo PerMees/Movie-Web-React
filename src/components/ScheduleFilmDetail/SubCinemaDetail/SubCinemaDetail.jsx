@@ -24,7 +24,6 @@ export default function SubCinema() {
     );
   }
   const renderTime = (rap) => {
-    console.log(rap.lichChieuPhim);
     return rap.lichChieuPhim.map((lichChieu, index) => {
       return (
         <div className="showtime px-2 text-center" key={index}>
@@ -65,7 +64,6 @@ export default function SubCinema() {
     });
   };
   if (index !== -1) {
-    console.log();
     return (
       <ul className="md:w-5/6">
         <div className="w-full">
