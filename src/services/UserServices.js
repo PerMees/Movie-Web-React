@@ -19,6 +19,10 @@ class UserService {
         return http.post(`/api/QuanLyNguoiDung/ThemNguoiDung`, user)
     }
 
+    EditUser(user) {
+        return http.put(`/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`, user)
+    }
+
     DeleteUser(taiKhoan) {
         return http.delete(`/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`)
     }

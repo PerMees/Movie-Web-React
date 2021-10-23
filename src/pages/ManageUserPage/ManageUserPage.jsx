@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react'
-import {DeleteUserAction, GetListUserAction} from "../../redux/actions/UserAction";
+import {DeleteUserAction, GetListUserAction, OpenAdminModelAction} from "../../redux/actions/UserAction";
 import {useDispatch, useSelector} from "react-redux";
 import {Input, Popconfirm, Table} from 'antd';
-import {OpenAdminModelAction} from "../../redux/actions/FilmAction";
 import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
 
 const {Search} = Input;

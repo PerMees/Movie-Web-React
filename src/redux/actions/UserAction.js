@@ -2,7 +2,8 @@ import {ACCESS_TOKEN, USER_ACCOUNT} from "../../util/setting";
 import {history} from "../../App";
 import {userService} from "../../services/UserServices";
 import {message} from "antd";
-import {ADD_USER, DELETE_USER, GET_LIST_USER} from "../types/UserType";
+import {ADD_USER, DELETE_USER, EDIT_USER, GET_LIST_USER} from "../types/UserType";
+import {OPEN_ADMIN_MODEL} from "../types/AdminType";
 
 export const RegisterAction = (user) => {
     return (dispatch) => {
@@ -35,7 +36,11 @@ export const LoginAction = (account) => {
         });
     };
 };
-
+export const OpenAdminModelAction = (componentType, user = {}) => {
+    return (dispatch) => {
+        dispatch({type: OPEN_ADMIN_MODEL, componentType, user});
+    };
+};
 export const GetListUserAction = (valueSearch) => {
     return (dispatch) => {
         let promise = userService.GetListUser(valueSearch);
@@ -68,6 +73,19 @@ export const DeleteUserAction = (taiKhoan) => {
         promise.catch((err) => {
             console.log(err.response?.data)
             message.error('Xóa người dùng thất bại!');
+        })
+    }
+}
+export const EditUserAction = (user) => {
+    return dispatch => {
+        let promise = userService.EditUser(user);
+        promise.then((res) => {
+            dispatch({type: EDIT_USER, user})
+            message.success('Chỉnh sửa người dùng thành công!');
+        })
+        promise.catch((err) => {
+            console.log(err.response?.data)
+            message.error('Chỉnh sửa người dùng thất bại!');
         })
     }
 }
