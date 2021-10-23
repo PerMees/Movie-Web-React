@@ -1,4 +1,4 @@
-import { GROUP_ID, http } from "../../util/setting";
+import { GROUP_ID, http } from "../util/setting";
 
 class FilmService {
   GetListFilm(tenPhim) {

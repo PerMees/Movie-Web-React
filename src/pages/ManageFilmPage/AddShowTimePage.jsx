@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {DatePicker, Form, InputNumber, message, Select, Space} from 'antd';
-import {cinemaService} from "../../redux/services/CinemaService";
+import {cinemaService} from "../../services/CinemaService";
 import _ from 'lodash';
 import {useFormik} from "formik";
 import {useSelector} from "react-redux";
 import moment from "moment";
-import {ticketService} from "../../redux/services/TicketService";
+import {ticketService} from "../../services/TicketService";
 
 
 export default function AddShowTimePage(props) {

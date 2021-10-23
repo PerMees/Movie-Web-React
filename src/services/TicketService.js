@@ -1,4 +1,4 @@
-import {http} from "../../util/setting"
+import {http} from "../util/setting"
 
 class TicketService {
     createShowTime(thongTinLichChieu) {

@@ -1,4 +1,4 @@
-import { http } from "../../util/setting";
+import { http } from "../util/setting";
 
 class CinemaService {
   GetCinema() {

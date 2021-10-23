@@ -6,7 +6,7 @@ import {
   GET_FILMS_OF_CINEMA,
   GET_SCHEDULE_OF_FILM,
 } from "../types/FilmType";
-import { filmService } from "../services/FilmService";
+import { filmService } from "../../services/FilmService";
 import {
   ADD_FILM,
   CLOSE_ADMIN_MODEL,

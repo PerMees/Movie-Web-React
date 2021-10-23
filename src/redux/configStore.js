@@ -3,13 +3,13 @@ import thunk from "redux-thunk";
 import FilmReducer from "./reducers/FilmReducer";
 import LoadingReducer from "./reducers/LoadingReducer";
 import CinemaReducer from "./reducers/CinemaReducer";
-import AdminReducer from "./reducers/AdminReducer";
+import UserReducer from "./reducers/UserReducer";
 
 const rootReducer = combineReducers({
     FilmReducer,
     LoadingReducer,
     CinemaReducer,
-    AdminReducer,
+    UserReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));

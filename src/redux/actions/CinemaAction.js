@@ -1,5 +1,5 @@
 import { GET_CINEMAS, GET_SUB_CINEMAS } from "../types/CinemaType";
-import { cinemaService } from "../services/CinemaService";
+import { cinemaService } from "../../services/CinemaService";
 
 export const GetCinemaAction = () => {
   return (dispatch) => {
