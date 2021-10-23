@@ -2,7 +2,7 @@ import {ACCESS_TOKEN, USER_ACCOUNT} from "../../util/setting";
 import {history} from "../../App";
 import {userService} from "../../services/UserServices";
 import {message} from "antd";
-import {DELETE_USER, GET_LIST_USER} from "../types/UserType";
+import {ADD_USER, DELETE_USER, GET_LIST_USER} from "../types/UserType";
 
 export const RegisterAction = (user) => {
     return (dispatch) => {
@@ -45,7 +45,19 @@ export const GetListUserAction = (valueSearch) => {
         promise.catch((err) => console.log(err.response?.data))
     }
 }
-
+export const AddUserAction = (user) => {
+    return (dispatch) => {
+        let promise = userService.AddUser(user);
+        promise.then((res) => {
+            dispatch({type: ADD_USER, user})
+            message.success('Thêm người dùng thành công!');
+        })
+        promise.catch((err) => {
+            console.log(err.response?.data)
+            message.error('Thêm người dùng thất bại!');
+        })
+    }
+}
 export const DeleteUserAction = (taiKhoan) => {
     return (dispatch) => {
         let promise = userService.DeleteUser(taiKhoan);

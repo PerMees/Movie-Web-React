@@ -1,4 +1,4 @@
-import {DELETE_USER, GET_LIST_USER} from "../types/UserType";
+import {ADD_USER, DELETE_USER, GET_LIST_USER} from "../types/UserType";
 
 const initialState = {
     listUser: []
@@ -7,6 +7,10 @@ export default (state = initialState, action) => {
     switch (action.type) {
         case GET_LIST_USER : {
             state.listUser = action.listUser;
+            return {...state}
+        }
+        case ADD_USER: {
+            state.listUser.push(action.user);
             return {...state}
         }
         case DELETE_USER: {

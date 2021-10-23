@@ -1,6 +1,9 @@
 import axios from "axios";
 export const TOKEN_CYBERSOFT =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCAwOEUiLCJIZXRIYW5TdHJpbmciOiIwNS8wMi8yMDIyIiwiSGV0SGFuVGltZSI6IjE2NDQwMTkyMDAwMDAiLCJuYmYiOjE2MTY1MTg4MDAsImV4cCI6MTY0NDE2NjgwMH0.iIk4OcH5Y7-xv_PZiazsjcBJkUj-eyGHjgFCfmWNnL0";
+export const REGEX_PHONE_NUMBER_VIETNAM = /(84|0[3|5|7|8|9])+([0-9]{8})\b/;
+export const REGEX_EMAIL =
+  /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 export const REGEX_URL =
   /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/;
 export const REGEX_ASCII =

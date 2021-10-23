@@ -15,6 +15,10 @@ class UserService {
         return http.get(`/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${GROUP_ID}`)
     }
 
+    AddUser(user) {
+        return http.post(`/api/QuanLyNguoiDung/ThemNguoiDung`, user)
+    }
+
     DeleteUser(taiKhoan) {
         return http.delete(`/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`)
     }

@@ -13,11 +13,15 @@ export default function ManageUserPage() {
     useEffect(() => {
         const action = GetListUserAction(search);
         dispatch(action);
-    }, [])
+    }, [search])
 
 
-    const onSearch = value => console.log(value);
-    const onEnter = e => console.log(e.target.value);
+    const onSearch = value => {
+        setSearch(value);
+    };
+    const onEnter = e => {
+        setSearch(e.target.value);
+    };
     const confirm = user => {
         const action = DeleteUserAction(user.taiKhoan);
         dispatch(action);
