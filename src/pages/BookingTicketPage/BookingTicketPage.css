@@ -20,8 +20,8 @@
     text-align: center;
     margin: 2px;
     border-radius: 4px;
-    color: #E5E7EB;
-    background: #EF4444;
+    color: black;
+    background: #E2E8F0;
     transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
@@ -29,7 +29,7 @@
 }
 
 .chair:hover {
-    background: #DC2626;
+    background: #CBD5E1;
 }
 
 .chair-vip {
@@ -42,12 +42,19 @@
 }
 
 .chair-booking {
-    background: #3B82F6;
+    color: white;
+    background: #DC2626;
 }
 
 .chair-booked {
     background: #9CA3AF;
     cursor: no-drop;
+}
+
+.payment-detail ul.ticketChose {
+    height: 20vh;
+    overflow-y: scroll;
+    
 }
 
 @media screen and (min-width: 768px) {
@@ -64,3 +71,4 @@
         margin: 5px;
     }
 }
+

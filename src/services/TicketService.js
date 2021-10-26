@@ -8,6 +8,10 @@ class TicketService {
     GetChairs(maLichChieu) {
         return http.get(`/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`);
     }
+
+    BookingTicket(thongTinDatVe) {
+        return http.post(`/api/QuanLyDatVe/DatVe`, thongTinDatVe)
+    }
 }
 
 export const ticketService = new TicketService();
