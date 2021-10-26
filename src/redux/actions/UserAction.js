@@ -24,11 +24,12 @@ export const LoginAction = (account) => {
         promise.then((result) => {
             localStorage.setItem(ACCESS_TOKEN, result.data.content.accessToken);
             localStorage.setItem(USER_ACCOUNT, JSON.stringify(result.data.content));
+
             message.success("Đăng nhập thành công!");
             setTimeout(() => {
                 if (result.data.content.maLoaiNguoiDung === "KhachHang")
-                    history.push("/");
-                return history.push("/admin");
+                    history.goBack();
+                history.push("/admin");
             }, 500);
         });
         promise.catch((err) => {

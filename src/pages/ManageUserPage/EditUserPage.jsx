@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import {GROUP_ID, REGEX_ASCII, REGEX_EMAIL, REGEX_PHONE_NUMBER_VIETNAM,} from "../../util/setting";
 import {useDispatch, useSelector} from "react-redux";
 import {EditUserAction} from "../../redux/actions/UserAction";
+import {CloseAdminModelAction} from "../../redux/actions/FilmAction";
 
 export default function EditUserPage() {
     // Admin chỉnh có thể thay đổi thông tin của chính admin chứ không thể thay đổi thông tin của user bình thường khác
@@ -40,6 +41,8 @@ export default function EditUserPage() {
         onSubmit: (values) => {
             const action = EditUserAction(values);
             dispatch(action);
+            const closeModalAction = CloseAdminModelAction();
+            dispatch(closeModalAction())
         },
     });
     return (

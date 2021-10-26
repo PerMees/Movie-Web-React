@@ -9,7 +9,7 @@ import RegisterForm from "./components/RegisterForm/RegisterForm.jsx";
 import { createBrowserHistory } from "history";
 import FilmDetailPage from "./pages/FilmDetailPage";
 import Loading from "./components/Loading/Loading";
-import BookingTicketPage from "./pages/BookingTicketPage";
+import BookingTicketPage from "./pages/BookingTicketPage/BookingTicketPage";
 import AdminTemplate from "./templates/AdminTemplate";
 import ManageFilmPage from "./pages/ManageFilmPage/ManageFilmPage";
 import ManageUserPage from "./pages/ManageUserPage/ManageUserPage";
