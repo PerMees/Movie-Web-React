@@ -8,18 +8,17 @@ import {EditUserAction} from "../../redux/actions/UserAction";
 import {CloseAdminModelAction} from "../../redux/actions/FilmAction";
 
 export default function EditUserPage() {
-    // Admin chỉnh có thể thay đổi thông tin của chính admin chứ không thể thay đổi thông tin của user bình thường khác
     const {userChoice} = useSelector(state => state.UserReducer);
     const dispatch = useDispatch();
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            taiKhoan: userChoice.taiKhoan,
-            hoTen: userChoice.hoTen,
-            email: userChoice.email,
-            soDt: userChoice.soDt,
-            matKhau: userChoice.matKhau,
-            maLoaiNguoiDung: userChoice.maLoaiNguoiDung,
+            taiKhoan: userChoice?.taiKhoan,
+            hoTen: userChoice?.hoTen,
+            email: userChoice?.email,
+            soDt: userChoice?.soDt,
+            matKhau: userChoice?.matKhau,
+            maLoaiNguoiDung: userChoice?.maLoaiNguoiDung,
             maNhom: GROUP_ID,
         },
         validationSchema: Yup.object({
@@ -128,6 +127,10 @@ export default function EditUserPage() {
                     <button
                         className="bg-yellow-500 hover:bg-yellow-600 hover:text-white rounded p-2 mx-auto block mt-2"
                         type="submit"
+                        onClick={() => {
+                            const action = CloseAdminModelAction();
+                            dispatch(action)
+                        }}
                     >
                         Chỉnh sửa người dùng
                     </button>

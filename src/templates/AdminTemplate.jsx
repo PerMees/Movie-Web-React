@@ -30,7 +30,6 @@ const AdminTemplate = (props) => {
                 <NavLink
                     to="/"
                     onClick={() => {
-                        // setLogin(false);
                         localStorage.clear();
                     }}
                 >

@@ -2,7 +2,7 @@ import {ACCESS_TOKEN, USER_ACCOUNT} from "../../util/setting";
 import {history} from "../../App";
 import {userService} from "../../services/UserServices";
 import {message} from "antd";
-import {ADD_USER, DELETE_USER, EDIT_USER, GET_LIST_USER} from "../types/UserType";
+import {ADD_USER, DELETE_USER, EDIT_USER, GET_LIST_USER, GET_USER} from "../types/UserType";
 import {OPEN_ADMIN_MODEL} from "../types/AdminType";
 
 export const RegisterAction = (user) => {
@@ -87,6 +87,18 @@ export const EditUserAction = (user) => {
         promise.catch((err) => {
             console.log(err.response?.data)
             message.error('Chỉnh sửa người dùng thất bại!');
+        })
+    }
+}
+
+export const GetUserAction = (user) => {
+    return dispatch => {
+        let promise = userService.GetUser(user.taiKhoan);
+        promise.then((res) => {
+            dispatch({type: GET_USER, user})
+        })
+        promise.catch((err) => {
+            console.log(err.response?.data)
         })
     }
 }
