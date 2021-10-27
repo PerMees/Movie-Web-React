@@ -149,6 +149,7 @@ export default function InfoPage() {
                 </div>
             </div>
             <div className="shadow-lg history-booked-ticket p-4 my-4 -container">
+                <h3 className='text-2xl font-bold'>Lịch sử đặt vé</h3>
                 <Table scroll={{x: 1000}} columns={columns} dataSource={data} onChange={onChange}/>
             </div>
         </div>
