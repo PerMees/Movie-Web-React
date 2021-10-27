@@ -9,6 +9,7 @@ import {CloseAdminModelAction} from "../../redux/actions/FilmAction";
 
 export default function EditUserPage() {
     const {userChoice} = useSelector(state => state.UserReducer);
+    // console.log(userChoice)
     const dispatch = useDispatch();
     const formik = useFormik({
         enableReinitialize: true,
@@ -16,7 +17,7 @@ export default function EditUserPage() {
             taiKhoan: userChoice?.taiKhoan,
             hoTen: userChoice?.hoTen,
             email: userChoice?.email,
-            soDt: userChoice?.soDt,
+            soDt: (userChoice?.soDt || userChoice?.soDT),
             matKhau: userChoice?.matKhau,
             maLoaiNguoiDung: userChoice?.maLoaiNguoiDung,
             maNhom: GROUP_ID,

@@ -4,13 +4,12 @@ import {OPEN_ADMIN_MODEL} from "../types/AdminType";
 const initialState = {
     listUser: [],
     userChoice: {},
-    user: {},
+    userInfo: {},
 }
 export default (state = initialState, action) => {
     switch (action.type) {
         case OPEN_ADMIN_MODEL: {
             state.userChoice = action.user;
-            state.user = action.user;
             return {...state}
         }
         case GET_LIST_USER : {
@@ -25,6 +24,7 @@ export default (state = initialState, action) => {
             const listUserUpdate = [...state.listUser].filter(user => user.taiKhoan !== action.user.taiKhoan);
             listUserUpdate.push(action.user);
             state.listUser = listUserUpdate;
+            state.userInfo = action.user;
             return {...state}
         }
         case DELETE_USER: {
@@ -33,7 +33,7 @@ export default (state = initialState, action) => {
             return {...state}
         }
         case GET_USER: {
-            state.user = action.user;
+            state.userInfo = action.userInfo;
             return {...state};
         }
         default:

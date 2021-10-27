@@ -93,9 +93,9 @@ export const EditUserAction = (user) => {
 
 export const GetUserAction = (user) => {
     return dispatch => {
-        let promise = userService.GetUser(user.taiKhoan);
+        let promise = userService.GetUser();
         promise.then((res) => {
-            dispatch({type: GET_USER, user})
+            dispatch({type: GET_USER, userInfo: res.data.content})
         })
         promise.catch((err) => {
             console.log(err.response?.data)

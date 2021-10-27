@@ -27,8 +27,8 @@ class UserService {
         return http.delete(`/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`)
     }
 
-    GetUser(taiKhoan) {
-        return http.get(`/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP00&tuKhoa=${taiKhoan}`)
+    GetUser() {
+        return http.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`);
     }
 }
 

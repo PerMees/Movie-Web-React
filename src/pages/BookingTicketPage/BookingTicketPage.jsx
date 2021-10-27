@@ -99,7 +99,7 @@ export default function BookingTicketPage(props) {
                         </li>
                         <li className='flex justify-between'>
                             <p className='font-bold'>Số điện thoại</p>
-                            <p>{userLogin.soDt}</p>
+                            <p>{userLogin.soDt || userLogin.soDT}</p>
                         </li>
                     </ul>
                     <div className="payment-detail-control">
