@@ -82,9 +82,9 @@ function Header() {
                 (navbarOpen ? " border-none my-2" : " border-r-2")
               }
             >
-              <NavLink className="header__navLink" to="/contact">
+              <a className="header__navLink" href="#contact">
                 Liên hệ
-              </NavLink>
+              </a>
             </li>
             <li
               className={
@@ -102,9 +102,9 @@ function Header() {
                 (navbarOpen ? " border-none my-2" : "")
               }
             >
-              <NavLink className="header__navLink" to="/apps">
+              <a className="header__navLink" href="#apps">
                 Ứng dụng
-              </NavLink>
+              </a>
             </li>
           </ul>
           {localStorage.getItem(USER_ACCOUNT) ? (

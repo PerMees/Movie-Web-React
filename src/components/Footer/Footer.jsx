@@ -172,7 +172,7 @@ function Footer() {
               </div>
             </div>
           </div>
-          <div className="w-full md:w-1/6 text-center mt-5 md:m-0">
+          <div className="w-full md:w-1/6 text-center mt-5 md:m-0" id="apps">
             <p className="footer__heading">MOBILE APP</p>
             <div className="mobileIcon flex justify-center">
               <img
@@ -208,7 +208,7 @@ function Footer() {
               width="80"
             />
           </div>
-          <div className="w-full md:w-9/12 pl-4">
+          <div className="w-full md:w-9/12 pl-4" id="contact">
             <p className="footer__heading">
               TIX – SẢN PHẨM CỦA CÔNG TY CỔ PHẦN ZION
             </p>

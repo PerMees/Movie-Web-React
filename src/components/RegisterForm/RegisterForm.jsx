@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import { REGEX_ASCII } from "../../util/setting";
 import { RegisterAction } from "../../redux/actions/UserAction";
-
+import { NavLink } from "react-router-dom";
 function RegisterForm() {
   const dispatch = useDispatch();
   const formik = useFormik({
@@ -119,6 +119,15 @@ function RegisterForm() {
       <button className="btn-login bg-red-600 font-bold rounded-md py-1 px-3  hover:bg-red-700">
         Đăng ký
       </button>
+      <p className=" mb-0 mt-3">
+        Đã có tài khoản?{" "}
+        <NavLink
+          to="/login"
+          className="text-white hover:text-red-600 font-bold"
+        >
+          Đăng nhập
+        </NavLink>
+      </p>
     </form>
   );
 }

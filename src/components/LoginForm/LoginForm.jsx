@@ -49,7 +49,7 @@ export default function LoginForm() {
           <p className=" text-red-500">{formik.errors.matKhau}</p>
         ) : null}
       </div>
-      <NavLink to="/forgot-matKhau" className="text-right font-bold">
+      <NavLink to="/forgot-password" className="text-right font-bold">
         Quên mật khẩu
       </NavLink>
       <br />

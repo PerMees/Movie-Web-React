@@ -33,7 +33,7 @@ const AccountTemplate = (props) => {
                                     className="account__logo w-20 block text-center mx-auto"
                                 />
                                 <props.component {...propsRoute} />
-                                <div className=" flex flex-col justify-center items-center mt-5">
+                                <div className=" flex flex-col justify-center items-center mt-2">
                                     <button
                                         className="social-button"
                                         style={{background: "#3d63b5"}}
