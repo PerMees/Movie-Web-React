@@ -5,30 +5,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@700;900&family=Quicksand:wght@300;400;500;600;700&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Quicksand", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
 }
 
 html {
-    font-size: 16px;
-    background: white;
-    scroll-behavior: smooth;
+  font-size: 16px;
+  background: white;
+  scroll-behavior: smooth;
 }
 
 a,
 button {
-    transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
 }
 
 /* width */
 ::-webkit-scrollbar {
-    width: 0.3125em;
-    height: 0.3125em;
+  width: 0.3125em;
+  height: 0.3125em;
 }
 
 /* Track */
@@ -38,10 +38,16 @@ button {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #888;
+  background: #888;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
+}
+
+.ant-message-custom-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
