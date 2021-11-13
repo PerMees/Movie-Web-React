@@ -24,6 +24,7 @@ function Footer() {
             </ul>
           </div>
           <div className="w-full md:w-1/6">
+            <p className="footer__heading"> </p>
             <ul className="md:mt-9">
               <li>
                 <NavLink to="" className="mb-4 block pr-7 hover:text-white">
