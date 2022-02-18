@@ -1,6 +1,6 @@
 import axios from "axios";
 export const TOKEN_CYBERSOFT =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCAwOEUiLCJIZXRIYW5TdHJpbmciOiIwNS8wMi8yMDIyIiwiSGV0SGFuVGltZSI6IjE2NDQwMTkyMDAwMDAiLCJuYmYiOjE2MTY1MTg4MDAsImV4cCI6MTY0NDE2NjgwMH0.iIk4OcH5Y7-xv_PZiazsjcBJkUj-eyGHjgFCfmWNnL0";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJOT0RFSlMgMTkiLCJIZXRIYW5TdHJpbmciOiIwMy8wNi8yMDIyIiwiSGV0SGFuVGltZSI6IjE2NTQyMTQ0MDAwMDAiLCJuYmYiOjE2Mzc1MTQwMDAsImV4cCI6MTY1NDM2MjAwMH0.RK-VEwae4Dr3J-Gwel9Dr993e1HwLIhZEGdMnaxqmUE";
 export const REGEX_PHONE_NUMBER_VIETNAM = /(84|0[3|5|7|8|9])+([0-9]{8})\b/;
 export const REGEX_EMAIL =
   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
